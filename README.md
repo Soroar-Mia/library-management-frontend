@@ -1,69 +1,46 @@
-# React + TypeScript + Vite
+# 📚 Minimal Library Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully functional, clean, and responsive **Library Management System** built with **React**, **Redux Toolkit Query (RTK Query)**, and **TypeScript** for the frontend, and **Node.js**, **Express**, and **MongoDB** for the backend. This system enables public access to book listings and core borrowing functionalities — all without authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Project Features
 
-## Expanding the ESLint configuration
+### 🛠️ Book Management
+- **View All Books**: Tabular display with essential book details: Title, Author, Genre, ISBN, Copies, Availability.
+- **Add New Book**: Form interface to add books with immediate UI update on creation.
+- **Edit Book**: Modify existing book information. Business logic ensures if copies = 0, the book is marked unavailable.
+- **Delete Book**: Confirmation-based book removal.
+- **Borrow Book**: Form to borrow copies of a book, enforcing availability rules.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 📖 Borrow Management
+- **Borrow Form**: Accepts quantity and due date. Quantity cannot exceed available copies.
+- **Availability Logic**: Marks books unavailable if copies reach zero.
+- **Borrow Summary**: Aggregated data showing total books borrowed per title.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 📄 Routes Overview
+| Route | Description |
+|-------|-------------|
+| `/books` | List all books with edit/delete/borrow options |
+| `/create-book` | Add a new book |
+| `/books/:id` | View single book details |
+| `/edit-book/:id` | Edit a book |
+| `/borrow/:bookId` | Borrow a book |
+| `/borrow-summary` | View borrow summary |
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧩 Technical Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### ⚛️ Frontend
+- **React + TypeScript**
+- **Redux Toolkit + RTK Query**
+- **Tailwind CSS** (for responsive and minimalist UI)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🌐 Backend
+- **Node.js + Express.js**
+- **MongoDB + Mongoose**
+- **MVC Architecture**
+- **RESTful API**
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
